@@ -1,9 +1,7 @@
 import numpy as np
 
 with open("input.txt", "r") as f:
-    lines = np.array([list(line.replace("\n", "")) for line in f.readlines()])
-
-    
+    lines = np.array([list(line.replace("\n", "")) for line in f.readlines()])    
     
     def oxygen_bit(index, matrix):
         if len(matrix) == 1:
@@ -19,14 +17,11 @@ with open("input.txt", "r") as f:
                 winning_value = "1"
             elif ones < zeros:
                 winning_value = "0"
-            elif ones == zeros:
+            else:
                 winning_value = "1"
-        correct_lines = np.array([line for line in matrix if line[index] == winning_value])
-
-            
+        correct_lines = np.array([line for line in matrix if line[index] == winning_value])            
         
-        return(oxygen_bit(index + 1, correct_lines))\
-
+        return(oxygen_bit(index + 1, correct_lines))
 
     def co2_bit(index, matrix):
         if len(matrix) == 1:
@@ -42,7 +37,7 @@ with open("input.txt", "r") as f:
                 winning_value = "0"
             elif ones < zeros:
                 winning_value = "1"
-            elif ones == zeros:
+            else:
                 winning_value = "0"
         correct_lines = np.array([line for line in matrix if line[index] == winning_value])            
         
