@@ -20,8 +20,7 @@ def win_check(boards):
 def calculate_win(board, number):
     total = 0
     for row in board:
-        row_numbers = [int(x) for x in row if x != "X"]
-        
+        row_numbers = [int(x) for x in row if x != "X"]        
         total += sum(row_numbers)
 
     return(total * int(number))
