@@ -10,7 +10,6 @@ def calculate(segment):
     signal = sorted(segment[0], key = len )
     signal = [''.join(sorted(s)) for s in signal]
     number = segment[1]
-    len5 = []
     len6 = []
     for digit in signal:
         # Remove the easiests ones. 
@@ -26,26 +25,22 @@ def calculate(segment):
                 digits[4] = digit
                 lines = [line for line in digit if line not in CF + A]
                 BD = lines
-            case 5: 
-                len5.append(digit)
             case 6:
-                len6.append(digit)                
+                len6.append(digit) 
+                if not all(elem in digit for elem in CF):
+                    for elem in CF:
+                        if elem in digit:
+                            display[5] = elem
+                        else: 
+                            display[2] = elem
+                if not all(elem in digit for elem in BD):
+                    for elem in BD:
+                        if elem in digit:
+                            display[1] = elem
+                        else:
+                            display[3] = elem               
             case 7:
-                digits[8] = digit
-
-    for i, digit in enumerate(len6):
-        if not all(elem in digit for elem in CF):
-            for elem in CF:
-                if elem in digit:
-                    display[5] = elem
-                else: 
-                    display[2] = elem
-        if not all(elem in digit for elem in BD):
-            for elem in BD:
-                if elem in digit:
-                    display[1] = elem
-                else:
-                    display[3] = elem
+                digits[8] = digit      
         
     ABCDF = [x for x in display if x != 0]
     
@@ -84,26 +79,14 @@ def calculate(segment):
 
     return(answer)
 
-
-
 with open("input.txt", "r") as f:
     segments = [segment.split(" | ") for segment in f.readlines()]
     for segment in segments:
         segment[0] = segment[0].split(" ")
         segment[1] = segment[1].replace("\n", "").split(" ")
         
-
-
     total = 0
     for segment in segments:
         total += calculate(segment)
 
     print(total)
-        
-
-
-            
-                
-
-
-            
