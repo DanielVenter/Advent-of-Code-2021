@@ -1,15 +1,13 @@
-import sys
-
 from functools import reduce
 from operator import mul
 
 with open("input.txt", "r") as f:
-    input_ = [s.strip() for s in f.readlines()]
+    floor = [s.strip() for s in f.readlines()]
 
 def height(xy):
     (x, y) = xy
-    if 0 <= y < len(input_) and 0 <= x < len(input_[y]):
-        return int(input_[y][x])
+    if 0 <= y < len(floor) and 0 <= x < len(floor[y]):
+        return int(floor[y][x])
     else:
         return 10
 
@@ -21,8 +19,8 @@ def is_minima(xy):
     return all(height(xy) < height(adj_xy) for adj_xy in adjecents(xy))
 
 def lowpoints():
-    return ((x,y) for y in range(len(input_)) 
-                  for x in range(len(input_[y])) 
+    return ((x,y) for y in range(len(floor)) 
+                  for x in range(len(floor[y])) 
                   if is_minima((x, y)))
 
 
