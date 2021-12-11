@@ -35,7 +35,7 @@ def complete(lines: list) -> int:
 
     return score
 
-def part2(lines):
+def part2(lines : list) -> int:
     scores = []
     for line in lines:
         if illegalChar(line):
