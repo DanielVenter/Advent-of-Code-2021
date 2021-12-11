@@ -87,6 +87,10 @@ with open("test.txt", "r") as f:
 
     for co in cooridantes:
         ocean = add_lines(ocean, co)
-    # ocean = add_lines(ocean, [[9,7], [7,9]])
 
     print(np.count_nonzero(ocean >= 2))
+
+
+
+
+
